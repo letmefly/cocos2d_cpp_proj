@@ -262,7 +262,12 @@ void SocketClient::startThread()
             if (offset > 0 && offset < dataBuffSize)
             {
                 memcpy(dataBuff, dataBuff + offset, dataBuffSize - offset);
-                dataUnusedSize = dataBuffSize - offset;
+            }
+
+            dataUnusedSize = dataBuffSize - offset;
+            if (dataUnusedSize < 0 || dataUnusedSize > SOCKET_BUFF_SIZE)
+            {
+                dataUnusedSize = 0;
             }
         }
     });
