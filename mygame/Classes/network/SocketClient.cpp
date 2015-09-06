@@ -151,8 +151,12 @@ void SocketClient::sendMessage(unsigned int messageID, char *data, long size)
         printf("[ERR]there is no element availabel in pool");
         return;
     }
-    element->data = data;
-    element->size = size;
+    char *msgData = (char*)malloc(MSG_HEADER_SIZE + size);
+    MessageHeader *header = (MessageHeader*)msgData;
+    header->messageID = messageID;
+    memcpy(msgData + MSG_HEADER_SIZE, data, size);
+    element->data = msgData;
+    element->size = MSG_HEADER_SIZE + size;
     this->pushSendQueueElement(element);
 }
 
