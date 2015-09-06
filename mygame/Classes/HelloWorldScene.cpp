@@ -79,7 +79,7 @@ bool HelloWorld::init()
     bool isConnect = SocketClient::getInstance()->connectServer("127.0.0.1", 2013);
     if (isConnect == true)
     {
-//    SocketClient::getInstance()->sendMessage(char *data, long size);
+        SocketClient::getInstance()->sendMessage(1, "hello", 5);
     }
 
     return true;

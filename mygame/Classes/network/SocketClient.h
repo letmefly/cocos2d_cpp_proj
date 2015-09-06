@@ -52,7 +52,7 @@ public:
     void startThread();
     void stopThread();
     
-    void sendMessage(char *data, long size);
+    void sendMessage(unsigned int messageID, char *data, long size);
     void recvMessage();
     void registerMessageHandler(unsigned short messageID, MessageHandler handler);
     void unregisterMessageHandler(unsigned short messageID);

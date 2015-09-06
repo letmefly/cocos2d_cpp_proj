@@ -143,7 +143,7 @@ bool SocketClient::connectServer(std::string ip, unsigned short port)
     return true;
 }
 
-void SocketClient::sendMessage(char *data, long size)
+void SocketClient::sendMessage(unsigned int messageID, char *data, long size)
 {
     Element *element = ElementPool::getInstance()->allocElement();
     if (NULL == element)
